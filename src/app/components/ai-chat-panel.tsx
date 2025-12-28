@@ -14,7 +14,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { aiChatAgentForStockInsights } from '@/ai/flows/ai-chat-agent-stock-insights';
 import { cn } from '@/lib/utils';
 
 interface AiChatPanelProps {
@@ -57,11 +56,12 @@ export function AiChatPanel({ isOpen, onOpenChange }: AiChatPanelProps) {
     setIsLoading(true);
 
     try {
-      const result = await aiChatAgentForStockInsights({ query: input });
+      // AI agent functionality is temporarily disabled.
       const assistantMessage: Message = {
         id: `assistant-${Date.now()}`,
         role: 'assistant',
-        content: result.response,
+        content:
+          'متاسفانه در حال حاضر امکان پاسخگویی وجود ندارد. لطفا بعدا تلاش کنید.',
       };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
